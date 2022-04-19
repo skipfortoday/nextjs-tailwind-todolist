@@ -1,10 +1,16 @@
 ## Next.JS Tailwind & Todo List
 
-Check on [Demo](https://nextjs-tailwind-table.vercel.app) .
+Check on [Demo](https://nextjs-tailwind-todolist-skipfortoday.vercel.app) .
+
+Gif is e2e testing using cy-press
+
+![Todolist e2e testing](https://user-images.githubusercontent.com/43211197/163987374-5a532681-f7c3-4713-8054-bc83da0b17f4.gif)
+
 
 Feature :
 
 - Different betwween done and undone task
+- sorting date
 - Simple github action to check dependencies & build in any node version
 - Simple cy-press unit test
 
@@ -63,6 +69,5 @@ You can check out [This Repo](https://github.com/skipfortoday/nextjs-tailwind-to
 
 ## Deploy on Vercel
 
-You can easy deploy your apps to [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
-
+You can easy deploy your apps to Vercel
 Check [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
