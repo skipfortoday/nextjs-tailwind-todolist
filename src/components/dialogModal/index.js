@@ -21,7 +21,7 @@ export default function DialogModal() {
   const handleClearTask = (dataForm) => {
     if (dataForm.id) {
       const taskList = todoList.filter((todo) => todo.id !== dataForm.id);
-      dataForm.status = 1;
+      dataForm.status = dataForm.status === 0 ? 1 : 0;
       dispatch(updateTodoList([...taskList, dataForm]));
     }
   };
@@ -85,16 +85,17 @@ export default function DialogModal() {
               value={formDataTodo?.description}
             ></textarea>
           </div>
-          {formDataTodo?.status === 0 && (
-            <label
-              htmlFor="my-modal-4"
-              className="btn btn-sm btn-success"
-              onClick={() => handleClearTask(formDataTodo)}
-              data-cy="clearTask"
-            >
-              Tandai Selesai
-            </label>
-          )}
+
+          <label
+            htmlFor="my-modal-4"
+            className="btn btn-sm btn-success"
+            onClick={() => handleClearTask(formDataTodo)}
+            data-cy="clearTask"
+          >
+            {formDataTodo?.status === 0
+              ? "Tandai Selesai"
+              : "Tandai Belum Selesai"}
+          </label>
 
           <div className="float-right">
             <label
@@ -105,15 +106,16 @@ export default function DialogModal() {
             >
               {!formDataTodo?.id ? "Create" : "Update"}
             </label>
-
-            <label
-              htmlFor="my-modal-4"
-              className="btn btn-sm btn-error"
-              onClick={() => handleDeleteTask(formDataTodo)}
-              data-cy="deleteTask"
-            >
-              Hapus
-            </label>
+            {formDataTodo?.status === 0 && (
+              <label
+                htmlFor="my-modal-4"
+                className="btn btn-sm btn-error"
+                onClick={() => handleDeleteTask(formDataTodo)}
+                data-cy="deleteTask"
+              >
+                Hapus
+              </label>
+            )}
           </div>
         </label>
       </label>
