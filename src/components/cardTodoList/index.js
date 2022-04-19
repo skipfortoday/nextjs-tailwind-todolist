@@ -17,17 +17,17 @@ const CardTodoList = ({ detailTodoList, actionOnClick, NumberIndex }) => {
             <span className="font-bold">#{NumberIndex + 1}.</span>{" "}
             {formatDate(detailTodoList.createdAt)}
           </p>
-          <p className="card-title text-lg">
+          <p className="card-title text-sm">
             {detailTodoList.title}{" "}
             <span
-              className={`badge badge-lg text-sm  ${
+              className={`badge badge-lg text-xs ${
                 detailTodoList.status === 0 ? "badge-accent" : "badge-primary"
               }`}
             >
-              {detailTodoList.status === 0 ? "Belum Selesai" : "Selesai"}
+              {detailTodoList.status === 0 ? "Belum Selesai" : "Sudah Selesai"}
             </span>
           </p>
-          <p>{detailTodoList.description}</p>
+          <p className="text-sm">{detailTodoList.description}</p>
         </div>
       </div>
     </label>
