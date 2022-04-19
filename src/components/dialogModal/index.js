@@ -57,6 +57,7 @@ export default function DialogModal() {
               type="text"
               placeholder={"Title"}
               value={formDataTodo?.title}
+              data-cy="taskTitle"
               onChange={(e) =>
                 dispatch(
                   setTodoFormData({ ...formDataTodo, title: e.target.value })
@@ -72,6 +73,7 @@ export default function DialogModal() {
             <textarea
               className="textarea textarea-primary w-full font-semibold"
               placeholder="Description"
+              data-cy="taskDescription"
               onChange={(e) =>
                 dispatch(
                   setTodoFormData({
@@ -88,6 +90,7 @@ export default function DialogModal() {
               htmlFor="my-modal-4"
               className="btn btn-sm btn-success"
               onClick={() => handleClearTask(formDataTodo)}
+              data-cy="clearTask"
             >
               Tandai Selesai
             </label>
@@ -98,6 +101,7 @@ export default function DialogModal() {
               htmlFor="my-modal-4"
               className="btn btn-sm btn-warning"
               onClick={() => handleSubmitForm(formDataTodo)}
+              data-cy="sumbitTask"
             >
               {!formDataTodo?.id ? "Create" : "Update"}
             </label>
@@ -106,6 +110,7 @@ export default function DialogModal() {
               htmlFor="my-modal-4"
               className="btn btn-sm btn-error"
               onClick={() => handleDeleteTask(formDataTodo)}
+              data-cy="deleteTask"
             >
               Hapus
             </label>
