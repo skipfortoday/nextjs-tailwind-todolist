@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://virtserver.swaggerhub.com/hanabyan";
+const BASE_URL = "https://virtserver.swaggerhub.com/hanabyan/";
 
 const instance = axios.create({
   baseURL: BASE_URL,

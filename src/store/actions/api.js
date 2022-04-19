@@ -1,7 +1,5 @@
 import http from "../../services/NetworkService";
 
-export const getUsers = (params) => {
-  return http.get("api/", {
-    params: params,
-  });
+export const getTodoList = () => {
+  return http.get("todo/1.0.0/to-do-list");
 };
