@@ -87,16 +87,18 @@ export default function DialogModal() {
             ></textarea>
           </div>
 
-          <label
-            htmlFor="my-modal-4"
-            className="btn btn-sm btn-success"
-            onClick={() => handleClearTask(formDataTodo)}
-            data-cy="clearTask"
-          >
-            {formDataTodo?.status === 0
-              ? "Tandai Selesai"
-              : "Tandai Belum Selesai"}
-          </label>
+          {formDataTodo?.id && (
+            <label
+              htmlFor="my-modal-4"
+              className="btn btn-sm btn-success"
+              onClick={() => handleClearTask(formDataTodo)}
+              data-cy="clearTask"
+            >
+              {formDataTodo?.status === 0
+                ? "Tandai Selesai"
+                : "Tandai Belum Selesai"}
+            </label>
+          )}
 
           <div className="float-right">
             <label
