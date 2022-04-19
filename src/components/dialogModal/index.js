@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { initialStateTodo } from "../../constants/keys";
 import { setTodoFormData, updateTodoList } from "../../store/actions/home";
 
 export default function DialogModal() {
@@ -103,10 +104,17 @@ export default function DialogModal() {
               className="btn btn-sm btn-warning"
               onClick={() => handleSubmitForm(formDataTodo)}
               data-cy="sumbitTask"
+              disabled={
+                !formDataTodo?.title ||
+                !formDataTodo?.description ||
+                formDataTodo?.title === initialStateTodo.title ||
+                formDataTodo?.description === initialStateTodo.description
+              }
             >
               {!formDataTodo?.id ? "Create" : "Update"}
             </label>
-            {formDataTodo?.status === 0 && (
+
+            {formDataTodo?.status === 0 && formDataTodo?.id && (
               <label
                 htmlFor="my-modal-4"
                 className="btn btn-sm btn-error"
