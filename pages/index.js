@@ -50,6 +50,7 @@ export default function Home() {
               htmlFor="my-modal-4"
               className="btn btn-xs my-1 font-semibold float-right mt-1"
               onClick={() => handleChangeDataModal(false)}
+              data-cy="createNew"
             >
               + Buat Task Baru
             </label>

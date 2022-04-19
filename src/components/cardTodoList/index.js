@@ -7,6 +7,7 @@ const CardTodoList = ({ detailTodoList, actionOnClick, NumberIndex }) => {
       htmlFor="my-modal-4"
       className=""
       onClick={() => actionOnClick(detailTodoList)}
+      data-cy={`todoList${detailTodoList.id}`}
     >
       <div
         className="card bg-base-100 shadow-xl  modal-button hover:bg-slate-200 cursor-pointer"
