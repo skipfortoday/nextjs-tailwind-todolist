@@ -2,6 +2,8 @@
 
 Check on [Demo](https://nextjs-tailwind-todolist-skipfortoday.vercel.app) .
 
+Gif is e2e testing using cy-press
+
 ![Todolist e2e testing](https://user-images.githubusercontent.com/43211197/163987374-5a532681-f7c3-4713-8054-bc83da0b17f4.gif)
 
 
