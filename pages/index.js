@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "../src/components/breadcrumb";
 import CardTodoList from "../src/components/cardTodoList";
 import DialogModal from "../src/components/dialogModal";
-import { fetchTodoList } from "../src/store/actions/home";
+import { initialStateTodo } from "../src/constants/keys";
+import { fetchTodoList, setTodoFormData } from "../src/store/actions/home";
 
 const pathName = {
   parent: "Home",
@@ -14,8 +15,15 @@ const pathName = {
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { todoList } = useSelector((state) => state.home);
-  const [dataModal, setDataModal] = useState([]);
+  const { todoList, formDataTodo } = useSelector((state) => state.home);
+
+  const handleChangeDataModal = (task) => {
+    if (task) {
+      dispatch(setTodoFormData(task));
+    } else {
+      dispatch(setTodoFormData(initialStateTodo));
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchTodoList());
@@ -29,10 +37,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-4">
-        <DialogModal data={dataModal} />
+        {formDataTodo && <DialogModal />}
+
         <Breadcrumb pathName={pathName} />
         <h1 className="text-4xl font-bold mt-5">Todolist Page</h1>
-        <div className="flex flex-col w-full lg:flex-row mt-3">
+        <div className="flex flex-col w-full lg:flex-row mt-3 mb-5">
           <div className="place-items-center">
             <div className="badge badge-accent text-lg font-semibold my-3  p-2">
               Belum Selesai
@@ -40,7 +49,7 @@ export default function Home() {
             <label
               htmlFor="my-modal-4"
               className="btn btn-xs my-1 font-semibold float-right mt-1"
-              // onClick={() => actionOnClick(detailTodoList)}
+              onClick={() => handleChangeDataModal(false)}
             >
               + Buat Task Baru
             </label>
@@ -48,10 +57,11 @@ export default function Home() {
               {/* Filter data sesuai status selesai / status === 0 */}
               {todoList
                 ?.filter((todo) => todo.status === 0)
+                .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
                 .map((item, index) => {
                   return (
                     <CardTodoList
-                      actionOnClick={setDataModal}
+                      actionOnClick={handleChangeDataModal}
                       detailTodoList={item}
                       NumberIndex={index}
                       key={index}
@@ -69,10 +79,11 @@ export default function Home() {
               {/* Filter data sesuai status selesai / status === 1 */}
               {todoList
                 ?.filter((todo) => todo.status === 1)
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                 .map((item, index) => {
                   return (
                     <CardTodoList
-                      actionOnClick={setDataModal}
+                      actionOnClick={handleChangeDataModal}
                       detailTodoList={item}
                       NumberIndex={index}
                       key={index}
